@@ -1,101 +1,169 @@
 
-let gamecount = 0;
+
 let playerscore = 0;
 let compscore = 0;
 
+let playerNum =  document.querySelector(".playerNum")
+playerNum.innerHTML =  playerscore;
+
+let compNum = document.querySelector(".compNum")
+compNum.innerHTML = compscore;
+
+var playerchoice;
+var compchoice;
+
+// Computer Events
+var compchoice = computerPlay();
 
 
-function game(){
- 
-    while(gamecount <= 5){ 
-        playround()
-    }
+function computerPlay(){
+    var choice = ["Rock","Paper","Scissors"]
+    return choice[Math.floor(Math.random() * choice.length)]
 
-function playround(){
+}
+// Button Events
 
-let playerchoice = prompt("Enter Rock, Paper Or Scissor.")
+const reset = document.querySelector(".reset");
+reset.addEventListener('click', () => {
+    location.reload()
+})
 
-function compchoice(){
-    let choice = ["Rock","Paper","Scissors"];
-    return choice[Math.floor(Math.random()*choice.length)]
+
+let rockbtn = document.querySelector(".Rock");
+rockbtn.addEventListener('click', rockClick)
+function rockClick(){
+     playRound("rock",computerPlay());
 }
 
 
-    // Rock 
+let paperbtn = document.querySelector('.Paper');
+    paperbtn.addEventListener('click', paperClick)
+    function paperClick(){
+        playRound("paper", computerPlay());
+    }
 
-    if(playerchoice == "Rock" && compchoice() == "Rock"){
-        console.log("Tie!");
-    }
-    else if(playerchoice == "Rock" && compchoice() == "Paper"){
-        compscore++;
-        console.log("You Lose!");
-        console.log("Computer Score:",compscore,"Player Score:",playerscore);
-    }
-    else if(playerchoice == "Rock" && compchoice() == "Scissors"){
-        playerscore++;
-        console.log("You Win!");
-        console.log("Computer Score:",compscore,"Player Score:",playerscore);
+let scissorsbtn = document.querySelector('.Scissors');
+    scissorsbtn.addEventListener('click', scissorClick)
+    function scissorClick(){
+        playRound("scissors", computerPlay());
     }
     
 
-    //Paper
-
-    if(playerchoice == "Paper" && compchoice() == "Rock"){
-        playerscore++;
-        console.log("You Win!");
-        console.log("Computer Score:",compscore,"Player Score:",playerscore);
-    }
-    else if(playerchoice == "Paper" && compchoice() == "Paper"){
-        console.log("Tie!");
-    }
-    else if(playerchoice == "Paper" && compchoice() == "Scissors"){
-        compscore++;
-        console.log("You Lose!");
-        console.log("Computer Score:",compscore,"Player Score:",playerscore);
-    }
 
 
-    //Scissors
+function playRound(playerchoice,compchoice){
 
-    if(playerchoice == "Scissors" && compchoice() == "Rock"){
-        compscore++;
-        console.log("You Lose!");
-        console.log("Computer Score:",compscore,"Player Score:",playerscore);
-    }
-    else if(playerchoice == "Scissors" && compchoice() == "Paper"){
-        playerscore++;
-        console.log("You Win!");
-        console.log("Computer Score:",compscore,"Player Score:",playerscore);
-    }
-    else if(playerchoice == "Scissors" && compchoice() == "Scissors"){
-        console.log("Tie!");
-    }
- gamecount++;
+// Rock
 
- 
+if (playerchoice === "rock" && compchoice === "Rock"){
+    
+    result.textContent = "Tie"
+    playerNum.innerHTML =  playerscore;
+    compNum.innerHTML = compscore;
+    
+    score(playerscore, compscore)
+}
+else if (playerchoice === "rock" && compchoice === "Paper"){
+    
+    result.textContent = "You Lose!"
+    compNum.innerHTML = ++compscore;
 
-    }
-    return playerscore,compscore;
+    score(playerscore, compscore)
+}
+else if(playerchoice === "rock" && compchoice === "Scissors"){
+    
+    result.textContent = "You Win!"
+    playerNum.innerHTML=  ++playerscore;
+    
+    score(playerscore, compscore)
 }
 
-game()
+// Paper
 
-if(playerscore > compscore){
-    console.log("Player Wins!");
-    console.log("Computer Score:",compscore,"Player Score:",playerscore);
+if(playerchoice === "paper" && compchoice === "Paper"){
+    result.textContent = "Tie"
+    playerNum.innerHTML =  playerscore;
+    compNum.innerHTML = compscore;
+    
+    score(playerscore, compscore)
 }
-else if(compscore > playerscore){
-    console.log("Computer Wins");
-    console.log("Computer Score:",compscore,"Player Score:",playerscore);
+else if(playerchoice === "paper" && compchoice === "Rock"){
+    result.textContent = "You Win!"
+    playerNum.innerHTML=  ++playerscore;
+    
+    score(playerscore, compscore)
 }
-else if(playerscore === compscore){
-    console.log("Its a Tie!");
-    console.log("Computer Score:",compscore,"Player Score:",playerscore);
+else if(playerchoice === "paper" && compchoice === "Scissors"){
+    result.textContent = "You Lose!"
+    compNum.innerHTML = ++compscore;
+
+    score(playerscore, compscore)
+}
+
+// Scissors
+
+
+if(playerchoice === "scissors" && compchoice === "Scissors"){
+    result.textContent = "Tie"
+    playerNum.innerHTML =  playerscore;
+    compNum.innerHTML = compscore;
+    
+    score(playerscore, compscore)
+    
+}
+else if(playerchoice === "scissors" && compchoice === "Rock"){
+    result.textContent = "You Lose!"
+    compNum.innerHTML = ++compscore;
+
+    score(playerscore, compscore)
+}
+else if(playerchoice === "scissors" && compchoice === "Paper"){
+    result.textContent = "You Win!"
+    playerNum.innerHTML=  ++playerscore;
+    
+    score(playerscore, compscore) 
+}
+  
 }
 
 
+function score(playerscore, compscore){
+    if( playerscore === 5 || compscore === 5){
+
+        stopGame()
+
+        if( playerscore > compscore){
+            
+            const result = document.querySelector("#result")
+            result.textContent = "Game Over: Player Wins";
+        }
+        else if (compscore > playerscore){
+            
+            const result = document.querySelector("#result")
+            result.textContent = "Game Over: Computer Wins";
+        }
+
+        
+           
+            
+    }
+
+}
 
 
+function stopGame(){
+    
+    rockbtn.removeEventListener('click',rockClick)
+    paperbtn.removeEventListener('click', paperClick)
+    scissorsbtn.removeEventListener('click', scissorClick)
+}
 
+
+function Game(){
+        playRound();
+}
+
+
+Game()
 
 

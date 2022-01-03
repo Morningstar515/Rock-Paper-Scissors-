@@ -5,11 +5,91 @@
 }
 
 .button{
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     font-size: 18px;
+
+}
+#masterDiv{
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 40px;
 }
 
+.refreshDiv{
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-top: 400px;
+    
+}
+
+.scoreDiv{
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+    gap: 80px;
+
+}
+
+.reset{
+    width: 175px;
+    height: 25px;
+    font-size: 18px;
+
+}
+.disable{
+    pointer-events: none;
+}
+
+#result{
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 100px;
+}
+.realscoreDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 190px;
+    margin-top: 25px;
+}
+
+.playerNum{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.compNum{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+/* choices*/
+
+.Rock{
+    
+}
+
+.Paper{
+
+}
+.Scissors{
+
+}
 
 
 

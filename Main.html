@@ -8,13 +8,27 @@
 </head>
 <body>
     <h2 class="title">Rock Paper Scissors</h2>
-    <script src="javascript.js"></script>
-    <div>
-        <button class="button"> Rock</button>
-        <button class="button">Paper</button>
-        <button class="button">Scissors</button>
+    <script src="javascript.js" defer></script>
+    
+    <div id="masterDiv">
+        <button class="button Rock">Rock</button>
+        <button class="button Paper">Paper</button>
+        <button class="button Scissors">Scissors</button>
     </div>
+    
+    <div id="result">Welcome</div>
 
+    <div class="scoreDiv">
+        <div class="playerside">Player Score:</div>
+        <div class="compside">Computer Score:</div>
+    </div>
+    <div class="realscoreDiv">
+        <div class="playerNum"></div>
+        <div class="compNum"></div>
+    </div>
+    <div class="refreshDiv">
+        <button class="reset">Play Again</button>
+    </div>
 
 
 </body>
