@@ -44,7 +44,6 @@ comupterScore.innerText = 0
     
 // Game Logic
 function PlayRound(player,computer){
-  
     switch(player){
         case "Rock":
             if(computer == "Paper"){
